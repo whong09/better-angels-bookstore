@@ -41,6 +41,7 @@ CORS_ALLOWED_ORIGINS = [
 
 INSTALLED_APPS = [
     "django.contrib.admin",
+    "django.contrib.admindocs",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -116,7 +117,14 @@ DATABASES = {
         "PASSWORD": os.environ.get("DJANGO_DATABASE_PASSWORD"),
         "HOST": os.environ.get("DJANGO_DATABASE_HOST"),
         "PORT": os.environ.get("DJANGO_DATABAE_PORT"),
-    }
+        "TEST": {
+            "NAME": "test_database",
+            "USER": "test_user",
+            "PASSWORD": "test_password",
+            "HOST": "localhost",
+            "PORT": "",
+        },
+    },
 }
 
 

@@ -10,4 +10,5 @@ urlpatterns = [
     re_path(r"^api/token/refresh/?$", TokenRefreshView.as_view(), name="token_refresh"),
     path("bookstore/", include("bookstoreapi.urls")),
     path("admin/", admin.site.urls),
+    path("/admin/doc/", include("django.contrib.admindocs.urls")),
 ]

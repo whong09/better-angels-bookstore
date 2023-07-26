@@ -12,3 +12,13 @@ def customer_authorization(view_func):
         return view_func(view, request, id, *args, **kwargs)
 
     return _view
+
+
+def staff_member_required(view_func):
+    @wraps(view_func)
+    def _view(view, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        return view_func(view, request, *args, **kwargs)
+
+    return _view

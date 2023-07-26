@@ -7,8 +7,7 @@ from rest_framework.response import Response
 from ..models import Book
 from ..serializers import BookSerializer
 from .authentication import JWTAuthenticatedView
-
-from django.contrib.admin.views.decorators import staff_member_required
+from ..decorators import staff_member_required
 
 
 class BookAPIView(JWTAuthenticatedView, PageNumberPagination):

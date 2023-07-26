@@ -18,7 +18,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
     popularity = models.IntegerField(default=0)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=0)
     image_url = models.CharField(max_length=100, null=True)
     search_vector = SearchVectorField(null=True, editable=False)
 
