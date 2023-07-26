@@ -3,6 +3,14 @@
 Big ups to chatgpt  
 https://chat.openai.com/share/3860abad-829b-47b5-a0b9-9d943db3d3e5
 
+<p float="left">
+   <img src="https://i.imgur.com/5y5Rve5.png" alt="login" width="100" height="200">
+   <img src="https://i.imgur.com/iZ0Eq9b.png" alt="signup" width="100" height="200">
+   <img src="https://i.imgur.com/0NeUMKO.png" alt="bookstore (list)" width="100" height="200">
+   <img src="https://i.imgur.com/SjP9vAQ.png" alt="reserve book" width="100" height="200">
+   <img src="https://i.imgur.com/98nJztH.png" alt="profile" width="100" height="200">
+</p>
+
 ## Setup Requirements
 
 Before getting started, you'll need to have the following software installed on your system:
@@ -64,6 +72,14 @@ cd your-repo
 2. Press 'a' to launch and connect to the Android emulator, or optionally scan the QR code on your mobile device using the Expo Go app.
 
 3. If you encounter a network error with Axios, run the following command to set up reverse port forwarding:
+
+   ```bash
+   adb reverse tcp:8163 tcp:8163
+   ```
+
+   , or optionally scan the QR code on your mobile device using the Expo Go app.
+
+4. If you encounter a network error with Axios, run the following command to set up reverse port forwarding:
 
    ```bash
    adb reverse tcp:8163 tcp:8163
