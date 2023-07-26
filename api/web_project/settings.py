@@ -111,11 +111,11 @@ SIMPLE_JWT = {
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "bookstore",
-        "USER": "bookstoreapi",
-        "PASSWORD": "yaybooks",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": os.environ.get("DJANGO_DATABASE_NAME"),
+        "USER": os.environ.get("DJANGO_DATABASE_USER"),
+        "PASSWORD": os.environ.get("DJANGO_DATABASE_PASSWORD"),
+        "HOST": os.environ.get("DJANGO_DATABASE_HOST"),
+        "PORT": os.environ.get("DJANGO_DATABAE_PORT"),
     }
 }
 

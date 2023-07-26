@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  # PostgreSQL service
+  postgres:
+    build:
+      context: ./api # Set the context to the Django project root directory
+      dockerfile: ../docker/Dockerfile.postgres
+    container_name: postgres_db
+    restart: always
+    ports:
+      - "5432:5432" # Map the PostgreSQL port to host
+    environment:
+      POSTGRES_DB: bookstore
+      POSTGRES_USER: bookstoreapi
+      POSTGRES_PASSWORD: yaybooks
+    volumes:
+      - ./data:/var/lib/postgresql/data # Mount a volume to persist PostgreSQL data
+
+  # Django service
+  django:
+    build:
+      context: ./api # Path to your Django project root directory
+      dockerfile: ../docker/Dockerfile.django # Path to your Django Dockerfile
+    container_name: django_app
+    restart: always
+    ports:
+      - "8000:8000" # Map the Django development server port to host
+    depends_on:
+      - postgres # Ensure that PostgreSQL is up before starting Django
+    environment:
+      - DEBUG=True # Set Django DEBUG mode
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_ALLOWED_HOSTS=localhost,10.0.2.2
+      - DJANGO_DATABASE_HOST=postgres
+      - DJANGO_DATABAE_PORT=5432
+      - DJANGO_DATABASE_NAME=bookstore
+      - DJANGO_DATABASE_USER=bookstoreapi
+      - DJANGO_DATABASE_PASSWORD=yaybooks
+
+    # Add any other environment variables that your Django application requires
+
+    # Mount your Django project directory into the container
+    volumes:
+      - ./api:/api
+
+    # Set the working directory inside the container
+    working_dir: /api
+
+    # Command to run the Django development server
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
